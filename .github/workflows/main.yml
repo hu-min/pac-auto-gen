@@ -1,0 +1,24 @@
+name: Auto generate pac file
+
+on:
+  push:
+    branches: [master]
+    paths:
+      - ".github/**/*"
+
+jobs:
+  Generate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-python@v2
+      - uses: BSFishy/pip-action@v1
+        with:
+          packages: genpac
+      - uses: actions/checkout@v2
+      - run: genpac --format "pac" --pac-proxy "PROXY 127.0.0.1:1080; SOCKS5 127.0.0.1:1080" > pac.txt
+      - uses: EndBug/add-and-commit@v4
+        with:
+          message: "update pac.txt"
+          add: "*.txt"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

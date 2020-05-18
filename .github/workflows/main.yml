@@ -22,5 +22,7 @@ jobs:
         with:
           message: "update pac.txt"
           add: "*.txt"
+          author_name: "Bot"
+          author_email: "bot@ndc.work"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

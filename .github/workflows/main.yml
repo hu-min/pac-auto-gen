@@ -17,7 +17,7 @@ jobs:
         with:
           packages: genpac
       - uses: actions/checkout@v2
-      - run: genpac --format "pac" --pac-proxy "PROXY 127.0.0.1:1080; SOCKS5 127.0.0.1:1080" > pac.txt
+      - run: genpac --format "pac" --pac-proxy "PROXY 127.0.0.1:1080; SOCKS5 127.0.0.1:1080" --user-rule-from ./user-rules.txt > pac.txt
       - uses: EndBug/add-and-commit@v4
         with:
           message: "update pac.txt"

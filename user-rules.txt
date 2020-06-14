@@ -2,3 +2,7 @@
 *.github.com
 *.githubusercontent.com
 *.githubassets.com
+
+! 2020/06/14 代理React官网和unpkg.com
+*.reactjs.org
+*.unpkg.com
